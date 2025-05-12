@@ -1,4 +1,6 @@
-print("hello word")
+import os
+import sqlite3
+import gui
 
 
 class Livestock:
