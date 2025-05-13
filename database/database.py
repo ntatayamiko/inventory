@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create_table():
     conn = sqlite3.connect('animals.db')
     a = conn.cursor()
@@ -22,8 +23,6 @@ def create_table():
     conn.commit()
     conn.close()
 
-# Calling the function
-#create_table()
 
 #adding the items
 def add_inv(inv_id, name, weight, age, date_purchased,status,purchase_price,market_value, quantity):
@@ -70,12 +69,12 @@ def view_inventory():
 view_inventory() # This function displays all the inventory in the database
 
 def search_inventory_by_name(name):
-    conn = sqlite3.connect('angel_store.db')
+    conn = sqlite3.connect('animals.db')
     a = conn.cursor()
-    a.execute("SELECT * FROM books WHERE book_title LIKE ?", ('%' + name + '%',))
+    a.execute("SELECT * FROM inventory WHERE name LIKE ?", ('%' + name + '%',))
     inventory = a.fetchall()
     conn.close()
-    return books
+    return inventory
 
 def search_inventory_by_status(status):
     conn = sqlite3.connect('animals.db')
@@ -83,7 +82,7 @@ def search_inventory_by_status(status):
     a.execute("SELECT * FROM inventory WHERE status LIKE ?", ('%' + status + '%',))
     inventory = a.fetchall()
     conn.close()
-    return books
+    return inventory
 
 
 #updating animal details
@@ -93,11 +92,11 @@ def update_inv_details(inv_id,new_name=None, new_weight=None, new_age=None, new_
 
     # Build a dynamic update query
     if new_name:
-        a.execute("UPDATE inventory SET name = ? WHERE inv_id = ?", (new_title, inv_id))
+        a.execute("UPDATE inventory SET name = ? WHERE inv_id = ?", (new_name, inv_id))
     if new_weight:
-        a.execute("UPDATE inventory SET genre = ? WHERE inv_id = ?", (new_genre, inv_id))
+        a.execute("UPDATE inventory SET weight = ? WHERE inv_id = ?", (new_weight, inv_id))
     if new_age:
-        a.execute("UPDATE inventory SET age = ? WHERE inv_id = ?", (new_price, inv_id))
+        a.execute("UPDATE inventory SET age = ? WHERE inv_id = ?", (new_age, inv_id))
     if new_date_purchased:
         a.execute("UPDATE inventory SET date_purchased = ? WHERE inv_id = ?", (new_date_purchased, inv_id))
     if new_status:
@@ -113,18 +112,18 @@ def update_inv_details(inv_id,new_name=None, new_weight=None, new_age=None, new_
     print(f"animal ID {inv_id} updated successfully.")
     conn.close()
 
-update_book_details(2, new_name="goat", new_weight=450.0,new_age=7, new_date_purchased=30, new_status="ready", new_purchase_price=450, new_market_value=650, new_quantity=7)
+update_inv_details(2, new_name="goat", new_weight=450.0,new_age=7, new_date_purchased=30, new_status="ready", new_purchase_price=450, new_market_value=650, new_quantity=7)
 
-# Getting a inventory by its title
+# Getting an inventory by its title
 def get_inventory_by_name(name):
     conn = sqlite3.connect('animals.db')
     a = conn.cursor()
 
     a.execute("SELECT * FROM inventory WHERE name = ?", (name,))
-    book = a.fetchone()
+    inventory = a.fetchone()
 
-    if book:
-        print(f"Found inventory:\n inv_id: {animl[0]} | name: {animl[1]} | weight: {animl[2]} | age: {animl[3]} | date_purchased: {animl[4]}| status: {animl[5]} | purchase_price: {animl[6]} | market_value: {animl[7]} | Quantity: {animl[8]}")
+    if inventory:
+        print(f"Found inventory:\n inv_id: {inventory[0]} | name: {inventory[1]} | weight: {inventory[2]} | age: {inventory[3]} | date_purchased: {inventory[4]}| status: {inventory[5]} | purchase_price: {inventory[6]} | market_value: {inventory[7]} | Quantity: {inventory[8]}")
     else:
         print(f"\nNo inventory found with name '{name}'.")
 
