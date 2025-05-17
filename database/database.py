@@ -1,4 +1,6 @@
 import sqlite3
+import wx
+import mainAPP
 
 
 def create_table():
@@ -6,6 +8,13 @@ def create_table():
     a = conn.cursor()
 
     # Creating the table
+    a.execute("""
+                    CREATE TABLE IF NOT EXISTS users (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        username TEXT UNIQUE,
+                        password TEXT UNIQUE
+                    )
+                """)
     a.execute('''
         CREATE TABLE inventory (
             inv_id INTEGER PRIMARY KEY,

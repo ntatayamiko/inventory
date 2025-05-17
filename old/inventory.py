@@ -1,6 +1,6 @@
 import os
 import sqlite3
-import gui
+import wx
 
 
 class Livestock:
