@@ -1,9 +1,45 @@
 import wx
 import sqlite3
 import database
-from GUI import gui
-import hashlib
+import gui
+from hashlib import sha256
 
+
+class LoginFrame(gui.LoginPage):
+
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.username = self.m_textCtrl1.GetValue()
+        self.password = self.m_textCtrl2.GetValue()
+
+
+    #overriding definitions from class login page
+    def user_login(self,username,password):
+        database.create_table()
+        conn = sqlite3.connect("animals.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT FROM user_accounts WHERE username=?",(username,))
+        database_hashed_password= cursor.fetchone() #retrieving from database
+        
+        hashed_input_password= sha256(password.encode()).hexdigest() #hashing input password to verify
+        if database_hashed_password and database_hashed_password[0]== hashed_password:
+            return True
+        else:
+            return False
+
+    user_login(self.username,self.password)
+
+    def create_user(self, event,username,password):
+        database.create_table()
+        conn = sqlite3.connect("animals.db")
+        cursor = conn.cursor()
+        hashed_password= sha256(password.encode()).hexdigest() #hashing user input password
+        cursor.execute("INSERT INTO user_accounts VALUES(?,?)",(username,hashed_password)) #storing into database
+        conn.commit()
+        self.user_login()
+
+    create_user()
 
 #function to refresh data
 def refresh_data():
@@ -17,50 +53,7 @@ def refresh_data():
             cell=rows[i]
             self.m_grid1.SetCellValue(i,j,str(cell[j]))
 
-####_______________________________________________________________##
-#function to create user account
-conn=sqlite3.connect("database.db") #connect to database
-cursor=conn.cursor()
-###create users table
-cursor.execute("""CREATE TABLE IF NOT EXIST users (username TEXT PRIMARY KEY, password TEXT)""")
-###function definition
-def create_account(username,password):
-    hashed_password=hashlib.sha256(password.encode()).hexdigest() # Hash password
-    #insert into database
-    cursor.execute("INSERT INTO users VALUES(?,?)", (username,hashed_password))
-    cursor.commit()
-#get user input
-username=input("enter username")
-password=input("enter password")
-#create account
-create_account(username,password)
-##_____________________________________________________________________##
-
-
-###___________________________________________________________________##
-#function to loging in
-conn=sqlite3.connect("animals,db")
-cursor=conn.cursor()
-
-#define the function
-def login(username,password):
-    # retrieve user stored details
-    cursor.execute("SELECT password FROM users WHERE username=?", (username))
-    stored_hashed_password=cursor.fetchone()
-    # hash input password
-    hashed_password= hashlib.sha256(password.encode()).hexdigest()
-    #verify password
-    if stored_hashed_password and stored_hashed_password[0]== hashed_password:
-        return True
-    else:
-        return False
-
-#get user input
-username=input("enter username")
-password=input("enter password")
-#login
-if login(username,password):
-    print("login successful")
-else:
-    print("invalid credentials")
-#####_______________________________________________________________________________##
+app=wx.App()
+frame= LoginFrame()
+frame.Show()
+app.MainLoop()

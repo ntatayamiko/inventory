@@ -62,9 +62,21 @@ class LoginPage ( wx.Frame ):
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.loginbutton.Bind( wx.EVT_BUTTON, self.user_login )
+		self.signinbutton.Bind( wx.EVT_BUTTON, self.create_user )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def user_login( self, event ):
+		event.Skip()
+	
+	def create_user( self, event ):
+		event.Skip()
 	
 
 ###########################################################################
@@ -112,9 +124,17 @@ class signUp ( wx.Frame ):
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_button15.Bind( wx.EVT_BUTTON, self.create_account )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def create_account( self, event ):
+		event.Skip()
 	
 
 ###########################################################################
@@ -559,10 +579,10 @@ class SALES ( wx.Frame ):
 	
 
 ###########################################################################
-## Class Full Inventory View
+## Class FullInventoryView
 ###########################################################################
 
-class Full Inventory View ( wx.Frame ):
+class FullInventoryView ( wx.Frame ):
 	
 	def __init__( self, parent ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1512,797 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )

@@ -176,11 +176,11 @@
                         <event name="OnUpdateUI"></event>
                     </object>
                 </object>
-                <object class="sizeritem" expanded="0">
+                <object class="sizeritem" expanded="1">
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND</property>
                     <property name="proportion">1</property>
-                    <object class="wxGridSizer" expanded="0">
+                    <object class="wxGridSizer" expanded="1">
                         <property name="cols">2</property>
                         <property name="hgap">0</property>
                         <property name="minimum_size"></property>
@@ -600,7 +600,7 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
-                        <event name="OnButtonClick"></event>
+                        <event name="OnButtonClick">user_login</event>
                         <event name="OnChar"></event>
                         <event name="OnEnterWindow"></event>
                         <event name="OnEraseBackground"></event>
@@ -688,7 +688,7 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
-                        <event name="OnButtonClick"></event>
+                        <event name="OnButtonClick">create_user</event>
                         <event name="OnChar"></event>
                         <event name="OnEnterWindow"></event>
                         <event name="OnEraseBackground"></event>
@@ -1458,7 +1458,7 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
-                        <event name="OnButtonClick"></event>
+                        <event name="OnButtonClick">create_account</event>
                         <event name="OnChar"></event>
                         <event name="OnEnterWindow"></event>
                         <event name="OnEraseBackground"></event>
@@ -7687,7 +7687,7 @@
             <property name="id">wxID_ANY</property>
             <property name="maximum_size"></property>
             <property name="minimum_size"></property>
-            <property name="name">Full Inventory View</property>
+            <property name="name">FullInventoryView</property>
             <property name="pos"></property>
             <property name="size">1512,797</property>
             <property name="style">wxDEFAULT_FRAME_STYLE</property>
