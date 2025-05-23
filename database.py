@@ -14,7 +14,7 @@ def create_table() -> None:
                     )
                 """)
     a.execute('''
-        CREATE TABLE inventory (
+        CREATE TABLE IF NOT EXISTS inventory (
             inv_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
             weight INTEGER DEFAULT 0,
@@ -29,7 +29,7 @@ def create_table() -> None:
 
     conn.commit()
     conn.close()
-
+print("table created")
 
 
 

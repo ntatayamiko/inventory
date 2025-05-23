@@ -9,7 +9,7 @@
 
 import wx
 import wx.xrc
-import wx.calendar
+#import wx.calendar
 import wx.grid
 import wx.dataview
 
