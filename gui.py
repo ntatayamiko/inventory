@@ -54,7 +54,7 @@ class LoginPage ( wx.Frame ):
 		self.loginbutton = wx.Button( self, wx.ID_ANY, u"LOGIN", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer1.Add( self.loginbutton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
-		self.signinbutton = wx.Button( self, wx.ID_ANY, u"SIGN-IN", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.signinbutton = wx.Button( self, wx.ID_ANY, u"SIGN-UP", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer1.Add( self.signinbutton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		
@@ -80,10 +80,10 @@ class LoginPage ( wx.Frame ):
 	
 
 ###########################################################################
-## Class signUp
+## Class SignUp
 ###########################################################################
 
-class signUp ( wx.Frame ):
+class SignUp ( wx.Frame ):
 	
 	def __init__( self, parent ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sign-Up Page", pos = wx.DefaultPosition, size = wx.Size( 509,373 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
@@ -126,6 +126,7 @@ class signUp ( wx.Frame ):
 		self.Centre( wx.BOTH )
 		
 		# Connect Events
+		self.m_button14.Bind( wx.EVT_BUTTON, self.closeFunc )
 		self.m_button15.Bind( wx.EVT_BUTTON, self.create_account )
 	
 	def __del__( self ):
@@ -133,6 +134,9 @@ class signUp ( wx.Frame ):
 	
 	
 	# Virtual event handlers, overide them in your derived class
+	def closeFunc( self, event ):
+		event.Skip()
+	
 	def create_account( self, event ):
 		event.Skip()
 	

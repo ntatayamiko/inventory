@@ -659,7 +659,7 @@
                         <property name="gripper">0</property>
                         <property name="hidden">0</property>
                         <property name="id">wxID_ANY</property>
-                        <property name="label">SIGN-IN</property>
+                        <property name="label">SIGN-UP</property>
                         <property name="max_size"></property>
                         <property name="maximize_button">0</property>
                         <property name="maximum_size"></property>
@@ -732,7 +732,7 @@
             <property name="id">wxID_ANY</property>
             <property name="maximum_size"></property>
             <property name="minimum_size"></property>
-            <property name="name">signUp</property>
+            <property name="name">SignUp</property>
             <property name="pos"></property>
             <property name="size">509,373</property>
             <property name="style">wxDEFAULT_FRAME_STYLE</property>
@@ -1370,7 +1370,7 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
-                        <event name="OnButtonClick"></event>
+                        <event name="OnButtonClick">closeFunc</event>
                         <event name="OnChar"></event>
                         <event name="OnEnterWindow"></event>
                         <event name="OnEraseBackground"></event>

@@ -1,6 +1,10 @@
 import wx
+import wx.xrc
+#import wx.calendar
+import wx.grid
+import wx.dataview
 import sqlite3
-import database
+from database import TheDatabase
 import gui
 from hashlib import sha256
 
@@ -15,31 +19,32 @@ class LoginFrame(gui.LoginPage):
 
 
     #overriding definitions from class login page
-    def user_login(self):
-        database.create_table()
-        conn = sqlite3.connect("animals.db")
-        cursor = conn.cursor()
-        cursor.execute("SELECT FROM user_accounts WHERE username=?",(username,))
-        database_hashed_password= cursor.fetchone() #retrieving from database
-        
-        hashed_input_password= sha256(password.encode()).hexdigest() #hashing input password to verify
-        if database_hashed_password == hashed_input_password:
-            return True
-        else:
-            return False
+    def user_login(self,event):
+        return TheDatabase.login(self.username,self.password)
 
 
-    def create_user(self, event):
-        #database.create_table()
-        conn = sqlite3.connect("animals.db")
-        cursor = conn.cursor()
-        hashed_password= sha256(self.password.encode()).hexdigest() #hashing user input password
-        cursor.execute("INSERT INTO user_accounts VALUES(?,?)",(self.username,hashed_password)) #storing into database
-        conn.commit()
+    def create_user(self,event):
+        return SignUpFrame(None)
+
+
+class SignUpFrame(gui.SignUp):
+    def __init__(self, parent):
+        gui.SignUp.__init__(self,parent)
+        self.username = self.m_textCtrl3.GetValue()
+        self.password = self.m_textCtrl4.GetValue()
+        self.email = self.m_textCtrl5.GetValue()
+
+    def create_account(self, event):
+        return TheDatabase.insert_user(self.username,self.password)
+
+    def closeFunc(self, event):
+        return self.Close()
+
+
 
 #function to refresh data
 def refresh_data():
-    cnn=connect()
+    cnn=sqlite3.connect("animals.db")
     cur=cnn.cursor()
     cur.execute("SELECT * FROM animals")
     rows=cur.fetchall()
@@ -50,6 +55,6 @@ def refresh_data():
             self.m_grid1.SetCellValue(i,j,str(cell[j]))
 
 app=wx.App()
-frame= LoginFrame(None)
+frame= SignUpFrame(None)
 frame.Show()
 app.MainLoop()
