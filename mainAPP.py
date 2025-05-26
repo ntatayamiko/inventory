@@ -20,11 +20,20 @@ class LoginFrame(gui.LoginPage):
 
     #overriding definitions from class login page
     def user_login(self,event):
-        return TheDatabase.login(self.username,self.password)
+        #if TheDatabase.login(self.username,self.password):
+        #self.Hide()
+        #home_frame = HomePageFrame(self)
+        #return home_frame.Show()
+        #else:
+            #self.Hide()
+            #sign_frame = SignUpFrame(self)
+            #return sign_frame.Show()
 
 
     def create_user(self,event):
-        return SignUpFrame(None)
+        self.Hide()
+        sign_frame=SignUpFrame(self)
+        return sign_frame.Show()
 
 
 class SignUpFrame(gui.SignUp):
@@ -35,26 +44,24 @@ class SignUpFrame(gui.SignUp):
         self.email = self.m_textCtrl5.GetValue()
 
     def create_account(self, event):
-        return TheDatabase.insert_user(self.username,self.password)
+        self.Hide()
+        home_frame = HomePageFrame(self)
+        return home_frame.Show()
+
+        #return TheDatabase.insert_user(self.username,self.password)
 
     def closeFunc(self, event):
         return self.Close()
 
+class HomePageFrame(gui.HomePage):
+    def __init__(self, parent):
+        gui.HomePage.__init__(self,parent)
 
 
 #function to refresh data
-def refresh_data():
-    cnn=sqlite3.connect("animals.db")
-    cur=cnn.cursor()
-    cur.execute("SELECT * FROM animals")
-    rows=cur.fetchall()
 
-    for i in range(0,len(rows)):
-        for j in range(0,4):
-            cell=rows[i]
-            self.m_grid1.SetCellValue(i,j,str(cell[j]))
 
 app=wx.App()
-frame= SignUpFrame(None)
+frame= LoginFrame(None)
 frame.Show()
 app.MainLoop()

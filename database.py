@@ -139,6 +139,15 @@ class TheDatabase:
         else:
             return False
 
+    def refresh_data(self):
+        self.conn.execute("SELECT * FROM animals")
+        rows = self.conn.fetchall()
+
+        for i in range(0, len(rows)):
+            for j in range(0, 4):
+                cell = rows[i]
+                self.m_grid1.SetCellValue(i, j, str(cell[j]))
+
 print("table created")
 
 
