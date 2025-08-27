@@ -2,7 +2,7 @@ import wx
 import gui
 import database
 
-class SignIn (SignInPanel):
+class SignIn (gui.SignInPanel):
     def __init__(self):
         super().__init__(parent)
 
@@ -29,3 +29,25 @@ class SignIn (SignInPanel):
             self.panel.SetSelection(0)
         else:
             self.signup_status.SetLabel("Username already exists")
+
+class LogIn(gui.Login):
+    def __init__(self):
+        super().__init__(parent)
+
+    def login( self, event ):
+        username = self.name_textCtrl3.GetValue()
+        password = self.password_textCtrl4.GetValue()
+
+        if not username or not password:
+            self.login_status.SetLabel("username and password are required")
+            return
+
+        if self.db.validate_user(username,password):
+            self.signup_status.SetLabel("Login was successfully")
+            #open the main application window
+            wx.MessageBox(f"welcome, {username}!", "Login success", wx.OK | wx.ICON_INFORMATION)
+        else:
+            self.login_status.SetLabel("Invalid username or password")
+
+
+    def sign_in_panel(self, event):
