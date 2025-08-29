@@ -2,7 +2,7 @@ import wx
 import gui
 import database
 
-class SignIn (gui.SignInPanel):
+class SignIn (gui.Welcome):
     def __init__(self):
         super().__init__(parent)
 
@@ -30,9 +30,9 @@ class SignIn (gui.SignInPanel):
         else:
             self.signup_status.SetLabel("Username already exists")
 
-class LogIn(gui.Login):
+class LogIn(gui.Welcome):
     def __init__(self):
-        super().__init__(parent)
+        super().__init__( parent )
 
     def login( self, event ):
         username = self.name_textCtrl3.GetValue()
@@ -51,3 +51,9 @@ class LogIn(gui.Login):
 
 
     def sign_in_panel(self, event):
+        pass
+
+app = wx.App()
+frame = SignIn()
+frame.Show()
+app.MainLoop()

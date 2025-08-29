@@ -130,11 +130,12 @@ class Welcome ( wx.Frame ):
 	# Virtual event handlers, overide them in your derived class
 	def login( self, event ):
 		event.Skip()
-	
+
 	def sign_in_panel( self, event ):
 		event.Skip()
-	
+
 	def sign_in( self, event ):
 		event.Skip()
 	
+
 
