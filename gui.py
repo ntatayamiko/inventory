@@ -52,6 +52,7 @@ class Welcome ( wx.Frame ):
 		bSizer1.Add( self.m_panel1, 1, wx.EXPAND |wx.ALL, 5 )
 		
 		self.signup_panel2 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.signup_panel2.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 		self.signup_panel2.Hide()
 		
 		signup_gSizer2 = wx.GridSizer( 0, 2, 0, 0 )
@@ -86,6 +87,42 @@ class Welcome ( wx.Frame ):
 		signup_gSizer2.Fit( self.signup_panel2 )
 		bSizer1.Add( self.signup_panel2, 1, wx.EXPAND |wx.ALL, 5 )
 		
+		self.login_panel21 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.login_panel21.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOWFRAME ) )
+		self.login_panel21.Hide()
+		
+		login_gSizer21 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.loginUser_staticText21 = wx.StaticText( self.login_panel21, wx.ID_ANY, u"Username", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.loginUser_staticText21.Wrap( -1 )
+		login_gSizer21.Add( self.loginUser_staticText21, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_BOTTOM, 5 )
+		
+		self.username_textCtrl11 = wx.TextCtrl( self.login_panel21, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		login_gSizer21.Add( self.username_textCtrl11, 0, wx.ALL|wx.ALIGN_BOTTOM, 5 )
+		
+		self.email_staticText311 = wx.StaticText( self.login_panel21, wx.ID_ANY, u"Email", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.email_staticText311.Wrap( -1 )
+		login_gSizer21.Add( self.email_staticText311, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_textCtrl21 = wx.TextCtrl( self.login_panel21, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		login_gSizer21.Add( self.m_textCtrl21, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.password_staticText41 = wx.StaticText( self.login_panel21, wx.ID_ANY, u"Password", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.password_staticText41.Wrap( -1 )
+		login_gSizer21.Add( self.password_staticText41, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.password_textCtrl31 = wx.TextCtrl( self.login_panel21, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		login_gSizer21.Add( self.password_textCtrl31, 0, wx.ALL, 5 )
+		
+		self.login_button31 = wx.Button( self.login_panel21, wx.ID_ANY, u"Login", wx.DefaultPosition, wx.DefaultSize, 0 )
+		login_gSizer21.Add( self.login_button31, 0, wx.ALL|wx.ALIGN_RIGHT, 5 )
+		
+		
+		self.login_panel21.SetSizer( login_gSizer21 )
+		self.login_panel21.Layout()
+		login_gSizer21.Fit( self.login_panel21 )
+		bSizer1.Add( self.login_panel21, 1, wx.EXPAND |wx.ALL, 5 )
+		
 		
 		self.SetSizer( bSizer1 )
 		self.Layout()
@@ -96,6 +133,7 @@ class Welcome ( wx.Frame ):
 		self.login_entry.Bind( wx.EVT_BUTTON, self.login_panel )
 		self.signup_entry.Bind( wx.EVT_BUTTON, self.signup_panel )
 		self.signup_button3.Bind( wx.EVT_BUTTON, self.create_account )
+		self.login_button31.Bind( wx.EVT_BUTTON, self.loginUser )
 	
 	def __del__( self ):
 		pass
@@ -109,6 +147,9 @@ class Welcome ( wx.Frame ):
 		event.Skip()
 	
 	def create_account( self, event ):
+		event.Skip()
+	
+	def loginUser( self, event ):
 		event.Skip()
 	
 

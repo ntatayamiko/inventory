@@ -53,7 +53,33 @@ class LogIn(gui.Welcome):
     def sign_in_panel(self, event):
         pass
 '''
-app = wx.App()
-frame = gui.Welcome(None)
-frame.Show()
-app.MainLoop()
+class MainFrame(gui.Welcome):
+    def __init__(self,parent):
+        super().__init__(parent)
+        self.panels = {"main":self.m_panel1, "signup":self.signup_panel2, "login":self.login_panel21}
+
+    def switchPanel(self,panel_name):
+        for panel in self.panels.values():
+            panel.Hide()
+        #show the requested panel
+        self.panels[panel_name].Show()
+        #tell the sizer to recalculate the layout
+        self.Layout()
+
+    def login_panel(self, event):
+        self.switchPanel("login")
+
+    def signup_panel(self, event):
+        self.switchPanel("signup")
+
+    def create_account(self, event):
+        pass
+
+    def loginUser(self, event):
+        pass
+            
+if __name__ == "__main__":
+    app = wx.App(False)
+    frame = MainFrame(None)
+    frame.Show()
+    app.MainLoop()
