@@ -1,8 +1,8 @@
 import wx
 import gui
-import database
+#import database
 
-class SignIn (gui.Welcome):
+'''class SignIn (gui.Welcome):
     def __init__(self):
         super().__init__(parent)
 
@@ -52,8 +52,8 @@ class LogIn(gui.Welcome):
 
     def sign_in_panel(self, event):
         pass
-
+'''
 app = wx.App()
-frame = SignIn()
+frame = gui.Welcome(None)
 frame.Show()
 app.MainLoop()
