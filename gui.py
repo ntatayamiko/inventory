@@ -17,7 +17,7 @@ import wx.xrc
 class Welcome ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 787,721 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 985,789 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_INFOBK ) )
@@ -123,6 +123,160 @@ class Welcome ( wx.Frame ):
 		login_gSizer21.Fit( self.login_panel21 )
 		bSizer1.Add( self.login_panel21, 1, wx.EXPAND |wx.ALL, 5 )
 		
+		self.main_panel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.main_panel.Hide()
+		
+		gSizer4 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		bSizer3 = wx.BoxSizer( wx.VERTICAL )
+		
+		gSizer6 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		sbSizer5 = wx.StaticBoxSizer( wx.StaticBox( self.main_panel, wx.ID_ANY, u"label" ), wx.VERTICAL )
+		
+		gSizer10 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.m_staticText8 = wx.StaticText( sbSizer5.GetStaticBox(), wx.ID_ANY, u"Name", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText8.Wrap( -1 )
+		gSizer10.Add( self.m_staticText8, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_textCtrl7 = wx.TextCtrl( sbSizer5.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer10.Add( self.m_textCtrl7, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_staticText9 = wx.StaticText( sbSizer5.GetStaticBox(), wx.ID_ANY, u"Age", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText9.Wrap( -1 )
+		gSizer10.Add( self.m_staticText9, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_textCtrl8 = wx.TextCtrl( sbSizer5.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer10.Add( self.m_textCtrl8, 0, wx.ALL, 5 )
+		
+		self.m_staticText10 = wx.StaticText( sbSizer5.GetStaticBox(), wx.ID_ANY, u"Supplier", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText10.Wrap( -1 )
+		gSizer10.Add( self.m_staticText10, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_textCtrl9 = wx.TextCtrl( sbSizer5.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer10.Add( self.m_textCtrl9, 0, wx.ALL, 5 )
+		
+		
+		sbSizer5.Add( gSizer10, 1, wx.EXPAND, 5 )
+		
+		
+		gSizer6.Add( sbSizer5, 1, wx.EXPAND, 5 )
+		
+		sbSizer1 = wx.StaticBoxSizer( wx.StaticBox( self.main_panel, wx.ID_ANY, u"Gender" ), wx.VERTICAL )
+		
+		self.m_radioBtn3 = wx.RadioButton( sbSizer1.GetStaticBox(), wx.ID_ANY, u"Male", wx.DefaultPosition, wx.DefaultSize, 0 )
+		sbSizer1.Add( self.m_radioBtn3, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_radioBtn4 = wx.RadioButton( sbSizer1.GetStaticBox(), wx.ID_ANY, u"Female", wx.DefaultPosition, wx.DefaultSize, 0 )
+		sbSizer1.Add( self.m_radioBtn4, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		
+		gSizer6.Add( sbSizer1, 1, wx.EXPAND, 5 )
+		
+		id_date_sbSizer4 = wx.StaticBoxSizer( wx.StaticBox( self.main_panel, wx.ID_ANY, u"id" ), wx.VERTICAL )
+		
+		gSizer9 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.id_label = wx.StaticText( id_date_sbSizer4.GetStaticBox(), wx.ID_ANY, u"Id Number", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.id_label.Wrap( -1 )
+		gSizer9.Add( self.id_label, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_textCtrl14 = wx.TextCtrl( id_date_sbSizer4.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer9.Add( self.m_textCtrl14, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.date_staticText16 = wx.StaticText( id_date_sbSizer4.GetStaticBox(), wx.ID_ANY, u"Date", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.date_staticText16.Wrap( -1 )
+		gSizer9.Add( self.date_staticText16, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_textCtrl15 = wx.TextCtrl( id_date_sbSizer4.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer9.Add( self.m_textCtrl15, 0, wx.ALL, 5 )
+		
+		
+		id_date_sbSizer4.Add( gSizer9, 1, wx.EXPAND, 5 )
+		
+		
+		gSizer6.Add( id_date_sbSizer4, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer3.Add( gSizer6, 1, wx.EXPAND, 5 )
+		
+		self.add_button = wx.Button( self.main_panel, wx.ID_ANY, u"Add", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer3.Add( self.add_button, 0, wx.ALL, 5 )
+		
+		self.delete_button = wx.Button( self.main_panel, wx.ID_ANY, u"Delete", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer3.Add( self.delete_button, 0, wx.ALL, 5 )
+		
+		self.update_button = wx.Button( self.main_panel, wx.ID_ANY, u"Update", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer3.Add( self.update_button, 0, wx.ALL, 5 )
+		
+		
+		gSizer4.Add( bSizer3, 1, wx.EXPAND, 5 )
+		
+		bSizer5 = wx.BoxSizer( wx.VERTICAL )
+		
+		gSizer5 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		
+		bSizer5.Add( gSizer5, 1, wx.EXPAND, 5 )
+		
+		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self.main_panel, wx.ID_ANY, u"Weight" ), wx.VERTICAL )
+		
+		gSizer7 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.m_staticText11 = wx.StaticText( sbSizer2.GetStaticBox(), wx.ID_ANY, u"unslottered", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11.Wrap( -1 )
+		gSizer7.Add( self.m_staticText11, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_textCtrl10 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer7.Add( self.m_textCtrl10, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_staticText12 = wx.StaticText( sbSizer2.GetStaticBox(), wx.ID_ANY, u"Slottered", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText12.Wrap( -1 )
+		gSizer7.Add( self.m_staticText12, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_textCtrl11 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer7.Add( self.m_textCtrl11, 0, wx.ALL, 5 )
+		
+		
+		sbSizer2.Add( gSizer7, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer5.Add( sbSizer2, 1, wx.EXPAND, 5 )
+		
+		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self.main_panel, wx.ID_ANY, u"Costs" ), wx.VERTICAL )
+		
+		gSizer8 = wx.GridSizer( 0, 2, 0, 0 )
+		
+		self.m_staticText13 = wx.StaticText( sbSizer3.GetStaticBox(), wx.ID_ANY, u"Purchase Price", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText13.Wrap( -1 )
+		gSizer8.Add( self.m_staticText13, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_textCtrl12 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer8.Add( self.m_textCtrl12, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		
+		self.m_staticText14 = wx.StaticText( sbSizer3.GetStaticBox(), wx.ID_ANY, u"Estimated Selling Cost", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText14.Wrap( -1 )
+		gSizer8.Add( self.m_staticText14, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_textCtrl13 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer8.Add( self.m_textCtrl13, 0, wx.ALL, 5 )
+		
+		
+		sbSizer3.Add( gSizer8, 1, wx.EXPAND, 5 )
+		
+		
+		bSizer5.Add( sbSizer3, 1, wx.EXPAND, 5 )
+		
+		
+		gSizer4.Add( bSizer5, 1, wx.EXPAND, 5 )
+		
+		
+		self.main_panel.SetSizer( gSizer4 )
+		self.main_panel.Layout()
+		gSizer4.Fit( self.main_panel )
+		bSizer1.Add( self.main_panel, 1, wx.EXPAND |wx.ALL, 5 )
+		
 		
 		self.SetSizer( bSizer1 )
 		self.Layout()
@@ -151,23 +305,5 @@ class Welcome ( wx.Frame ):
 	
 	def loginUser( self, event ):
 		event.Skip()
-	
-
-###########################################################################
-## Class homeFrame
-###########################################################################
-
-class homeFrame ( wx.Frame ):
-	
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"HOME", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-		
-		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
-		
-		
-		self.Centre( wx.BOTH )
-	
-	def __del__( self ):
-		pass
 	
 
